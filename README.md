@@ -103,8 +103,6 @@ This should be called `before_install` in `.travis.yml`.
 
 ### `run.sh`
 
-Create (or modify) `.travis.yml` in your project.
-
 ```
 run.sh file
 ```
