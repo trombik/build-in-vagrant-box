@@ -11,6 +11,9 @@ This is useful when you:
 - build something on different OSes other than `linux` or `macOS`
 - build something on different arch or machine
 
+An example project can be found at
+[trombik/build-in-vagrant-box-test](https://github.com/trombik/build-in-vagrant-box-test).
+
 ## Rationale
 
 `go` claims to be able to cross-compile binaries for multiple targets. But it
