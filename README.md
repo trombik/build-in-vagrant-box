@@ -117,60 +117,6 @@ download.sh dest-dir
 Download all the files in the build directory on the guest to `dest-dir` on
 the host, using `rsync`. The `dest-dir` must exist.
 
-## Example `.travis.yml`
+## Examples
 
-The following `.travis.yml` runs four jobs. A guest specified in `VAGRANT_BOX`
-is created in each job. `build.sh`, an example build script is executed in the
-guest. The artifacts are downloaded to `dest` directory on the host.
-
-```yaml
----
-os: linux
-dist: bionic
-language: ruby
-
-env:
-  - VAGRANT_BOX=trombik/ansible-freebsd-12.1-amd64
-  - VAGRANT_BOX=trombik/ansible-openbsd-6.6-amd64
-  - VAGRANT_BOX=trombik/ansible-ubuntu-18.04-amd64
-  - VAGRANT_BOX=trombik/ansible-centos-7.4-x86_64
-
-addons:
-  apt:
-    update: true
-    packages:
-      - python-pip
-      - curl
-      - bridge-utils
-      - dnsmasq-base
-      - ebtables
-      - libvirt-bin
-      - libvirt-dev
-      - qemu-kvm
-      - qemu-utils
-      - ruby-dev
-
-before_install:
-  - yes | gem update --system --force
-  - gem install bundler
-  - git clone https://github.com/trombik/build-in-vagrant-box
-  - build-in-vagrant-box/bin/before_install.sh
-
-script:
-  - mkdir dest
-  - build-in-vagrant-box/bin/up.sh "${VAGRANT_BOX}"
-  - build-in-vagrant-box/bin/run.sh build.sh
-  - build-in-vagrant-box/bin/download.sh dest
-  - grep file1 dest/file1
-  - grep file2 dest/foo/file2
-```
-
-An example `build.sh`
-
-```sh
-#!/bin/sh
-
-echo "file1" >> file1
-mkdir -p foo
-echo "file2" >> foo/file2
-```
+See [trombik/build-in-vagrant-box-test](https://github.com/trombik/build-in-vagrant-box-test).
