@@ -101,12 +101,12 @@ This should be called `before_install` in `.travis.yml`.
 ### `run.sh`
 
 ```
-run.sh file
+run.sh file "ENV1=foo ENV2=bar"
 ```
 
 Run `file` in the VM. The `file` is assumed to be an execrable file, usually a
 shell script. The file is copied to an empty build directory on the VM, and
-executed.
+executed. The second argument will be passed to `env(1)` in the guest.
 
 ### `download.sh`
 
