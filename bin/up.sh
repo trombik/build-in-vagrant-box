@@ -20,4 +20,4 @@ fi
     cd "${VAGRANT_CWD}"
     sed -e "s|%%VAGRANT_BOX%%|${VAGRANT_BOX}|" Vagrantfile.template > Vagrantfile
 )
-VAGRANT_LOG=info vagrant up --provider "${VAGRANT_PROVIDER}" --no-provision
+VAGRANT_LOG=warn vagrant up --provider "${VAGRANT_PROVIDER}" --no-provision
