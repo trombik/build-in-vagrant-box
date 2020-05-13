@@ -58,11 +58,8 @@ Your `.travis.yml` must include the following `before_install` section.
 
 ```yaml
 before_install:
-  - |
-    if [ ! -d vagrant-run ]; then
-      git clone https://github.com/trombik/build-in-vagrant-box || exit 1
-    fi
-  - vagrant-run/bin/before_install.sh
+  - git clone https://github.com/trombik/build-in-vagrant-box
+  - build-in-vagrant-box/bin/before_install.sh
 ```
 
 A directory to download artifacts from the guest.
@@ -77,9 +74,9 @@ In your `.travis.yml`
 script:
   # do something, such as build and tests here...
   - mkdir dest
-  - vagrant-run/bin/up.sh "${VAGRANT_BOX}"
-  - vagrant-run/bin/run.sh build.sh
-  - vagrant-run/bin/download.sh dest
+  - build-in-vagrant-box/bin/up.sh "${VAGRANT_BOX}"
+  - build-in-vagrant-box/bin/run.sh build.sh
+  - build-in-vagrant-box/bin/download.sh dest
 ```
 
 ### `up.sh`
@@ -156,17 +153,14 @@ addons:
 before_install:
   - yes | gem update --system --force
   - gem install bundler
-  - |
-    if [ ! -d vagrant-run ]; then
-      git clone https://github.com/trombik/build-in-vagrant-box || exit 1
-    fi
-  - vagrant-run/bin/before_install.sh
+  - git clone https://github.com/trombik/build-in-vagrant-box
+  - build-in-vagrant-box/bin/before_install.sh
 
 script:
   - mkdir dest
-  - vagrant-run/bin/up.sh "${VAGRANT_BOX}"
-  - vagrant-run/bin/run.sh build.sh
-  - vagrant-run/bin/download.sh dest
+  - build-in-vagrant-box/bin/up.sh "${VAGRANT_BOX}"
+  - build-in-vagrant-box/bin/run.sh build.sh
+  - build-in-vagrant-box/bin/download.sh dest
   - grep file1 dest/file1
   - grep file2 dest/foo/file2
 ```
