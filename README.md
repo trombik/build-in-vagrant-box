@@ -60,7 +60,7 @@ Your `.travis.yml` must include the following `before_install` section.
 before_install:
   - |
     if [ ! -d vagrant-run ]; then
-      git clone https://github.com/trombik/vagrant-run || exit 1
+      git clone https://github.com/trombik/build-in-vagrant-box || exit 1
     fi
   - vagrant-run/bin/before_install.sh
 ```
@@ -160,7 +160,7 @@ before_install:
   - gem install bundler
   - |
     if [ ! -d vagrant-run ]; then
-      git clone https://github.com/trombik/vagrant-run || exit 1
+      git clone https://github.com/trombik/build-in-vagrant-box || exit 1
     fi
   - vagrant-run/bin/before_install.sh
 
