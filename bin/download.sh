@@ -12,5 +12,5 @@ export VAGRANT_CWD=`realpath ${MY_DIR}/..`
 
 vagrant ssh-config > ${SSH_CONFIG_FILE}
 
-rsync -a -e "ssh -F ${SSH_CONFIG_FILE}" default:${SRC_DIR}/ ${DEST_DIR}/
+rsync -av -e "ssh -F ${SSH_CONFIG_FILE}" default:${SRC_DIR}/ ${DEST_DIR}/
 ls -al ${DEST_DIR}
